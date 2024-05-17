@@ -1,3 +1,7 @@
+from os import system
+from data import lista_videos
+from class_video import Video
+
 """
 Consigna:
 1. IMPLEMENTAR LOS METODOS VACIOS DE LA CLASE VIDEO
@@ -18,7 +22,65 @@ H. LISTAR POR MES: el usuario ingresa un mes, y se deberán listar todos los tem
 I. SALIR 
 
 NOTA: 
-1. Las opciones BCDEFG no serán accesibles si no se normalizan previamente los datos.
+1. Las opciones BCDEFGH no serán accesibles si no se normalizan previamente los datos.
 2. Todas las opciones tienen que estar resueltas en metodos de la clase Video que reciban una lista de videos sumado a los
 parametros necesarios para lograr el objetivo y mantener independencia de código.
 """
+
+
+normalizado = False
+
+error_normalizacion = "No se normalizaron los videos, por favor seleccione la opcion A"
+
+while True:
+    opcion: str = input("Seleccione una de las siguientes opciones:\nA. NORMALIZAR OBJETOS\nB. MOSTRAR TEMAS\nC. ORDENAR TEMAS\nD. PROMEDIO DE VISTAS\nE. MAXIMA REPRODUCCION\nF. BUSQUEDA POR CODIGO\nG. LISTAR POR COLABORADOR\nH. LISTAR POR MES\nI. SALIR\n")
+    opcion = opcion.upper()
+    match opcion:
+        case "A":
+            Video.normalizar_objetos(Video, lista_videos)
+            normalizado = True
+        case "B":
+            if normalizado:
+                Video.mostrar_lista_temas(Video, lista_videos)
+            else:
+                print(error_normalizacion)
+        case "C":
+            if normalizado:
+                Video.ordenar_temas(Video, lista_videos)
+            else:
+                print(error_normalizacion)
+        case "D":
+            if normalizado:
+                Video.promedio_vistas(Video, lista_videos)
+            else:
+                print(error_normalizacion)
+        case "E":
+            if normalizado:
+                Video.maxima_reproduccion(Video, lista_videos)
+            else:
+                print(error_normalizacion)
+        case "F":
+            if normalizado:
+                codigo: str = input("Por favor ingrese el codigo: \n")
+                Video.busqueda_por_codigo(Video, lista_videos, codigo)
+            else:
+                print(error_normalizacion)
+        case "G":
+            if normalizado:
+                colaborador: str = input("Por favor ingrese el colaborador: \n")
+                Video.listar_por_colaborador(Video, lista_videos, colaborador)
+            else:
+                print(error_normalizacion)
+        case "H":
+            if normalizado:
+                mes: str = input("Por favor ingrese el mes: \n")
+                Video.listar_por_mes(Video, lista_videos, mes)
+            else:
+                print(error_normalizacion)
+        case "I":
+            break
+        case _:
+            print("Por favor ingrese una opcion valida")
+        
+    system("pause")
+    system("cls")
