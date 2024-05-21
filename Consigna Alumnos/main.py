@@ -3,6 +3,15 @@ from data import lista_videos
 from class_video import Video
 
 """
+Integrantes:
+
+Agustín Gonzalez
+Alan del Canto
+Alex Fernández
+Celeste Czajkowski
+
+
+
 Consigna:
 1. IMPLEMENTAR LOS METODOS VACIOS DE LA CLASE VIDEO
 
